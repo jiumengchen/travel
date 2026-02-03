@@ -208,3 +208,101 @@ updated_at        DATETIME
 confirmed_at      DATETIME
 completed_at      DATETIME
 cancelled_at      DATETIME
+
+### 攻略主表 (travel_guides)
+guide_id          INT PRIMARY KEY AUTO_INCREMENT
+user_id           INT FOREIGN KEY REFERENCES users(user_id)
+destination_id    INT FOREIGN KEY REFERENCES destinations(destination_id)
+title             VARCHAR(200) NOT NULL
+cover_image       VARCHAR(500)
+subtitle          VARCHAR(500)  -- 副标题/简介
+travel_duration   INT  -- 建议游玩天数
+best_season       VARCHAR(100)  -- 最佳季节
+suitable_for      JSON  -- 适合人群 ['family', 'couple', 'solo', 'friends']
+budget_range      ENUM('budget', 'moderate', 'luxury', 'various')
+total_cost        DECIMAL(10,2)  -- 总花费估计
+currency          VARCHAR(3) DEFAULT 'CNY'
+content           LONGTEXT  -- 详细内容（HTML或Markdown）
+summary           TEXT  -- 攻略摘要
+status            ENUM('draft', 'published', 'hidden', 'deleted') DEFAULT 'draft'
+view_count        INT DEFAULT 0
+like_count        INT DEFAULT 0
+collect_count     INT DEFAULT 0
+comment_count     INT DEFAULT 0
+share_count       INT DEFAULT 0
+reading_time      INT  -- 预计阅读分钟数
+language          VARCHAR(10) DEFAULT 'zh-CN'
+version           INT DEFAULT 1  -- 版本号
+is_official       BOOLEAN DEFAULT FALSE  -- 官方攻略
+is_featured       BOOLEAN DEFAULT FALSE  -- 精选攻略
+is_recommended    BOOLEAN DEFAULT FALSE  -- 编辑推荐
+seo_title         VARCHAR(200)
+seo_description   VARCHAR(500)
+seo_keywords      VARCHAR(200)
+created_at        DATETIME DEFAULT CURRENT_TIMESTAMP
+updated_at        DATETIME
+published_at      DATETIME
+last_edited_at    DATETIME
+
+### 攻略标签表 (guide_tags)
+guide_tag_id      INT PRIMARY KEY AUTO_INCREMENT
+guide_id          INT FOREIGN KEY REFERENCES travel_guides(guide_id)
+tag_name          VARCHAR(50) NOT NULL  -- 如：#美食 #摄影 #亲子
+tag_type          ENUM('topic', 'activity', 'style', 'custom')
+created_at        DATETIME DEFAULT CURRENT_TIMESTAMP
+INDEX idx_guide_tag (guide_id, tag_name)
+
+### 攻略收藏表 (guide_collections)
+collection_id     INT PRIMARY KEY AUTO_INCREMENT
+user_id           INT FOREIGN KEY REFERENCES users(user_id)
+guide_id          INT FOREIGN KEY REFERENCES travel_guides(guide_id)
+collection_name   VARCHAR(100)  -- 收藏夹名称
+notes             TEXT  -- 收藏备注
+category          VARCHAR(50)  -- 自定义分类
+is_public         BOOLEAN DEFAULT FALSE  -- 是否公开收藏夹
+created_at        DATETIME DEFAULT CURRENT_TIMESTAMP
+updated_at        DATETIME
+UNIQUE KEY unique_user_guide (user_id, guide_id)
+
+### 攻略点赞表 (guide_likes)
+like_id           INT PRIMARY KEY AUTO_INCREMENT
+user_id           INT FOREIGN KEY REFERENCES users(user_id)
+guide_id          INT FOREIGN KEY REFERENCES travel_guides(guide_id)
+like_type         ENUM('like', 'love', 'useful', 'awesome') DEFAULT 'like'
+created_at        DATETIME DEFAULT CURRENT_TIMESTAMP
+UNIQUE KEY unique_user_guide_like (user_id, guide_id)
+
+### 攻略评论表 (guide_comments)
+comment_id        INT PRIMARY KEY AUTO_INCREMENT
+guide_id          INT FOREIGN KEY REFERENCES travel_guides(guide_id)
+user_id           INT FOREIGN KEY REFERENCES users(user_id)
+parent_id         INT DEFAULT 0  -- 回复的评论ID
+content           TEXT NOT NULL
+images            JSON  -- 评论图片
+reply_to_user_id  INT  -- 回复的用户ID
+like_count        INT DEFAULT 0
+report_count      INT DEFAULT 0
+status            ENUM('pending', 'approved', 'hidden', 'deleted') DEFAULT 'pending'
+is_featured       BOOLEAN DEFAULT FALSE  -- 精选评论
+ip_address        VARCHAR(45)
+user_agent        VARCHAR(500)
+created_at        DATETIME DEFAULT CURRENT_TIMESTAMP
+updated_at        DATETIME
+INDEX idx_guide_parent (guide_id, parent_id)
+
+### 攻略问答表 (guide_qa)
+qa_id             INT PRIMARY KEY AUTO_INCREMENT
+guide_id          INT FOREIGN KEY REFERENCES travel_guides(guide_id)
+user_id           INT FOREIGN KEY REFERENCES users(user_id)
+question          TEXT NOT NULL
+answer            TEXT  -- 回答（可由其他用户或作者回答）
+answered_by       INT FOREIGN KEY REFERENCES users(user_id)  -- 回答者
+answer_images     JSON
+status            ENUM('pending', 'answered', 'closed') DEFAULT 'pending'
+upvote_count      INT DEFAULT 0
+view_count        INT DEFAULT 0
+is_faq            BOOLEAN DEFAULT FALSE  -- 是否常见问题
+tags              JSON  -- 问题标签
+created_at        DATETIME DEFAULT CURRENT_TIMESTAMP
+answered_at       DATETIME
+updated_at        DATETIME
