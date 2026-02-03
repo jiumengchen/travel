@@ -3,15 +3,14 @@
     <AdminBreadcrumb />
     <div class="top">
       <div class="left">
-        <a-input-search v-model:value="value" placeholder="请输入用户邮箱" enter-button @search="onSearch" class="inpSearch" />
+        <slot name="HeaderLeft"></slot>
       </div>
       <div class="right">
-        <a-button type="primary">刷新</a-button>
-        <a-button type="primary">重置</a-button>
+        <slot name="HeaderRight"></slot>
       </div>
     </div>
     <div class="main">
-
+      <slot name="Main"></slot>
     </div>
   </div>
 </template>
@@ -39,9 +38,9 @@
     justify-content: space-between;
 
     .left {
-      .inpSearch {
-        width: 300px;
-      }
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
     .right {

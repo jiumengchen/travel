@@ -12,6 +12,8 @@ import dayjs from 'dayjs'
 import 'dayjs/locale/zh-cn'
 import updateLocale from 'dayjs/plugin/updateLocale'
 import NotifyConfirm from '@/components/NotifyConfirm/index.vue'
+import AdminBreadcrumb from '@/components/AdminBreadcrumb/index.vue'
+import TemplateComponent from '@/components/TemplateComponent/index.vue'
 import '@/mock/index'
 dayjs.locale('zh-cn')
 dayjs.extend(updateLocale)
@@ -27,5 +29,7 @@ app.use(Antd, { locale: zhCN } as any)
 
 app.component('SvgIcon', SvgIcon)
 app.component('NotifyConfirm', NotifyConfirm)
+app.component('AdminBreadcrumb', AdminBreadcrumb)
+app.component('TemplateComponent', TemplateComponent)
 
 app.mount('#app')

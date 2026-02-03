@@ -83,6 +83,14 @@ const adminRouters: RouteRecordRaw[] = [
               icon: 'icon-gonglve',
             },
           },
+          {
+            path: '/admin/contentmanage/tagsmanage',
+            component: () => import('@/views/admin/tagsmanage/index.vue'),
+            meta: {
+              title: '标签管理',
+              icon: 'icon-biaoqian',
+            },
+          },
         ],
       },
       {

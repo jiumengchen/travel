@@ -5,15 +5,15 @@
         style="width: 300px;" />
     </template>
     <template #HeaderRight>
-      <a-button type="primary">新增用户</a-button>
+      <a-button type="primary">新增标签</a-button>
       <a-button type="primary">刷新</a-button>
       <a-button type="primary">重置</a-button>
     </template>
   </TemplateComponent>
 </template>
 
-<script setup>
+<script setup lang="ts">
 
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>
