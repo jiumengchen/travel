@@ -6,7 +6,7 @@
         <p class="desc">继续你的旅行探索，发现更多精彩目的地。你的下一次旅行计划准备好了吗？</p>
       </div>
       <div class="right">
-        <a-button>
+        <a-button @click="create">
           <svg-icon name="addtrip" fill="#1e88e5" width="18px" height="18px"></svg-icon>
           <p>发布新攻略</p>
         </a-button>
@@ -15,12 +15,12 @@
     <div class="select">
       <div class="left">
         <div class="item" v-for="item in collectType" :key="item.id" :class="{ active: item.id === activeIndex }"
-          @click="handleType(item.id)">{{
-            item.name }}</div>
+          @click="handleType(item.id)">
+          {{ item.name }}
+        </div>
       </div>
       <div class="right">
-        <a-input placeholder="搜索收藏...">
-        </a-input>
+        <a-input placeholder="搜索收藏..."> </a-input>
         <svg-icon name="search" fill="#86909c" class="icon" width="18px" height="18px"></svg-icon>
       </div>
     </div>
@@ -30,7 +30,7 @@
           <div class="img_box">
             <img
               src="https://design.gemcoder.com/staticResource/echoAiSystemImages/df946792eb7890cd53149680e0c5d569.png"
-              alt="">
+              alt="" />
             <div class="mask">
               <a-tag color="#f50">城市探索</a-tag>
               <div class="view-info">
@@ -61,7 +61,7 @@
         </div>
       </div>
       <div class="paging">
-        <a-pagination v-model:current="currentPage" :total="50" show-less-items style="margin:  10px auto;" />
+        <a-pagination v-model:current="currentPage" :total="50" show-less-items style="margin: 10px auto" />
       </div>
     </div>
   </div>
@@ -69,32 +69,39 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-const activeIndex = ref<number>(1);
-const currentPage = ref<number>(1);
+import { useRouter } from 'vue-router'
+const $router = useRouter()
+const activeIndex = ref<number>(1)
+const currentPage = ref<number>(1)
 const collectType = ref<any[]>([
   {
     id: 1,
-    name: '全部攻略'
+    name: '全部攻略',
   },
   {
     id: 2,
-    name: '目的地'
+    name: '目的地',
   },
   {
     id: 3,
-    name: '酒店'
+    name: '酒店',
   },
   {
     id: 4,
-    name: '景点'
+    name: '景点',
   },
   {
     id: 5,
-    name: '攻略'
-  }
+    name: '攻略',
+  },
 ])
 const handleType = (id: number) => {
-  activeIndex.value = id;
+  activeIndex.value = id
+}
+const create = () => {
+  $router.push({
+    path: '/person/createtraveltips',
+  })
 }
 </script>
 
@@ -215,7 +222,7 @@ const handleType = (id: number) => {
         width: 100%;
         border-radius: 10px;
         border-bottom: 1px solid #f6f6f6;
-        transition: all .4s;
+        transition: all 0.4s;
         background-color: #fff;
         box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
 
@@ -242,7 +249,7 @@ const handleType = (id: number) => {
             flex-direction: column;
             justify-content: space-between;
             color: #fff;
-            background-color: rgba($color: #000000, $alpha: .1);
+            background-color: rgba($color: #000000, $alpha: 0.1);
             border-radius: 10px 10px 0 0;
 
             p {

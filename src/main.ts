@@ -1,5 +1,6 @@
 import 'ant-design-vue/dist/reset.css'
 import '@/styles/reset.scss'
+import '@/styles/iconfont.scss'
 import { createApp } from 'vue'
 import store from './stores'
 import router from './router'
@@ -10,6 +11,7 @@ import zhCN from 'ant-design-vue/es/locale/zh_CN'
 import dayjs from 'dayjs'
 import 'dayjs/locale/zh-cn'
 import updateLocale from 'dayjs/plugin/updateLocale'
+import NotifyConfirm from '@/components/NotifyConfirm/index.vue'
 import '@/mock/index'
 dayjs.locale('zh-cn')
 dayjs.extend(updateLocale)
@@ -24,5 +26,6 @@ app.use(router)
 app.use(Antd, { locale: zhCN } as any)
 
 app.component('SvgIcon', SvgIcon)
+app.component('NotifyConfirm', NotifyConfirm)
 
 app.mount('#app')

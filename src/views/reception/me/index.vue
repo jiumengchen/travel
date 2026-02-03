@@ -85,7 +85,7 @@
                     <h2>西安文化探索之旅</h2>
                     <div class="time">
                       <svg-icon name="date" fill="#6b7280"></svg-icon>
-                      <p>2023/10/15 - 2023/10/22</p>
+                      <p>2025/10/15 - 2025/10/22</p>
                     </div>
                   </div>
                   <div class="position">

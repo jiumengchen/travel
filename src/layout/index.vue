@@ -9,14 +9,14 @@
         <a-menu v-model:selectedKeys="current" mode="horizontal" :items="items" @click="goPage($event)" class="menu" />
       </div>
       <div class="loginBox">
-        <svg-icon name="cart" :fill="iconColor.cart" width="22px" height="22px" style="cursor: pointer;"
+        <svg-icon name="cart" :fill="iconColor.cart" width="22px" height="22px" style="cursor: pointer"
           @mouseover="iconColor.cart = '#ff9800'" @mouseleave="iconColor.cart = '#fff'"
           @click="$router.push('/cart')"></svg-icon>
-        <svg-icon name="message" :fill="iconColor.message" width="22px" height="22px" style="cursor: pointer;"
+        <svg-icon name="message" :fill="iconColor.message" width="22px" height="22px" style="cursor: pointer"
           @mouseover="iconColor.message = '#ff9800'" @mouseleave="iconColor.message = '#fff'"></svg-icon>
-        <svg-icon name="aboutme" :fill="iconColor.aboutme" width="22px" height="22px" style="cursor: pointer;"
+        <svg-icon name="aboutme" :fill="iconColor.aboutme" width="22px" height="22px" style="cursor: pointer"
           @mouseover="iconColor.aboutme = '#ff9800'" @mouseleave="iconColor.aboutme = '#fff'"
-          @click="$router.push('/person'); current = ['/person']"></svg-icon>
+          @click="goPerson"></svg-icon>
         <a-button type="primary" class="loginBtn" @click="goLogin">登录 / 注册</a-button>
       </div>
     </div>
@@ -25,18 +25,24 @@
 </template>
 
 <script setup lang="ts">
-import type { MenuProps } from 'ant-design-vue';
-import { ref, onMounted } from 'vue';
-import { useRouter, useRoute } from 'vue-router';
-const $route = useRoute();
-const headerRef = ref(null);
+import type { MenuProps } from 'ant-design-vue'
+import { ref, onMounted } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
+const $route = useRoute()
+const headerRef = ref(null)
 const iconColor = ref({
   cart: '#fff',
   message: '#fff',
-  aboutme: '#fff'
+  aboutme: '#fff',
 })
-const $router = useRouter();
-const current = ref<string[]>([$route.matched.length > 1 ? $route.matched[1].path : $route.matched[0].path]);
+const $router = useRouter()
+const current = ref<string[]>([
+  $route.matched.length > 1 ? $route.matched[1].path : $route.matched[0].path,
+])
+const goPerson = () => {
+  $router.push('/person')
+  current.value = ['/person']
+}
 const items = ref<MenuProps['items']>([
   {
     key: '/index',
@@ -72,7 +78,7 @@ const items = ref<MenuProps['items']>([
     key: '/about',
     label: '关于我们',
     title: '关于我们',
-  }
+  },
 ])
 const goPage = (e: any) => {
   $router.push(e.key)
@@ -115,7 +121,6 @@ const goLogin = () => {
           color: #ff9800 !important;
         }
       }
-
     }
 
     .logoBox {
@@ -143,14 +148,12 @@ const goLogin = () => {
         background-color: #fff;
         color: #1677ff;
         border: 1px solid #1677ff;
-        transition: all .4s;
+        transition: all 0.4s;
 
         &:hover {
           background-color: transparent;
           transform: translateY(-5%);
         }
-
-
       }
     }
   }

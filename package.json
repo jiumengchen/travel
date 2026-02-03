@@ -17,6 +17,7 @@
     "@wangeditor/editor-for-vue": "^5.1.12",
     "ant-design-vue": "^4.2.6",
     "axios": "^1.13.2",
+    "echarts": "^6.0.0",
     "mockjs": "^1.1.0",
     "nanoid": "^5.1.6",
     "path": "^0.12.7",

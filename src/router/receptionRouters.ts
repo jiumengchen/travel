@@ -100,6 +100,20 @@ const receptionRouters: RouteRecordRaw[] = [
         },
       },
       {
+        path: '/payorder',
+        component: () => import('@/views/reception/payorder/index.vue'),
+        meta: {
+          title: '订单结算',
+        },
+      },
+      {
+        path: '/payresult',
+        component: () => import('@/views/reception/payresult/index.vue'),
+        meta: {
+          title: '订单结算结果',
+        },
+      },
+      {
         path: '/person',
         component: () => import('@/views/reception/person/index.vue'),
         meta: {
@@ -129,10 +143,10 @@ const receptionRouters: RouteRecordRaw[] = [
             },
           },
           {
-            path: '/person/myfootprint',
-            component: () => import('@/views/reception/myfootprint/index.vue'),
+            path: '/person/myorder',
+            component: () => import('@/views/reception/myorder/index.vue'),
             meta: {
-              title: '旅行足迹',
+              title: '我的订单',
             },
           },
           {
@@ -143,17 +157,17 @@ const receptionRouters: RouteRecordRaw[] = [
             },
           },
           {
-            path: '/person/myachievement',
-            component: () => import('@/views/reception/myachievement/index.vue'),
-            meta: {
-              title: '旅行成就',
-            },
-          },
-          {
             path: '/person/edituserinfo',
             component: () => import('@/views/reception/edituserinfo/index.vue'),
             meta: {
               title: '编辑个人资料',
+            },
+          },
+          {
+            path: '/person/createtraveltips',
+            component: () => import('@/views/reception/createtraveltips/index.vue'),
+            meta: {
+              title: '创建攻略',
             },
           },
         ],

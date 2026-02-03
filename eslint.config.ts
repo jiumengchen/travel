@@ -8,18 +8,18 @@ import skipFormatting from '@vue/eslint-config-prettier/skip-formatting'
 // configureVueProject({ scriptLangs: ['ts', 'tsx'] })
 // More info at https://github.com/vuejs/eslint-config-typescript/#advanced-setup
 
-export default defineConfigWithVueTs(
-  {
-    name: 'app/files-to-lint',
-    files: ['**/*.{ts,mts,tsx,vue}'],
-  },
+// export default defineConfigWithVueTs(
+//   {
+//     name: 'app/files-to-lint',
+//     files: ['**/*.{ts,mts,tsx,vue}'],
+//   },
 
-  globalIgnores(['**/dist/**', '**/dist-ssr/**', '**/coverage/**']),
-  // @ts-ignore 
-  'rules', {
-    'vue/multi-word-component-names': 'off' 
-  },
-  pluginVue.configs['flat/essential'],
-  vueTsConfigs.recommended,
-  skipFormatting,
-)
+//   globalIgnores(['**/dist/**', '**/dist-ssr/**', '**/coverage/**']),
+//   // @ts-ignore
+//   'rules', {
+//     'vue/multi-word-component-names': 'off'
+//   },
+//   pluginVue.configs['flat/essential'],
+//   vueTsConfigs.recommended,
+//   skipFormatting,
+// )

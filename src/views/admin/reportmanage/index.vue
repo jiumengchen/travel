@@ -1,6 +1,6 @@
 <template>
   <div>
-    我是旅行成就页
+    举报管理
   </div>
 </template>
 

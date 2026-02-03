@@ -110,7 +110,7 @@ const menu = ref([
     iconColor: '#374151'
   },
   {
-    path: '/person/myfootprint',
+    path: '/person/myorder',
     name: '我的订单',
     icon: 'myfootprint',
     iconColor: '#374151'
@@ -120,13 +120,7 @@ const menu = ref([
     name: '我的攻略',
     icon: 'myguide',
     iconColor: '#374151'
-  },
-  {
-    path: '/person/myachievement',
-    name: '旅行成就',
-    icon: 'myachievement',
-    iconColor: '#374151'
-  },
+  }
 ])
 const currentMenu = ref('/person/me');
 

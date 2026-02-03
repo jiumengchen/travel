@@ -1,7 +1,8 @@
 * {
   box-sizing: border-box;
   background-repeat: no-repeat;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  user-select: none;
 }
 
 body {
@@ -124,7 +125,7 @@ input {
   }
 }
 
-[type="number"] {
+[type='number'] {
   -moz-appearance: textfield;
 
   &::-webkit-inner-spin-button,
@@ -135,7 +136,7 @@ input {
   }
 }
 
-[type="search"] {
+[type='search'] {
   -webkit-appearance: textfield;
 
   &::-webkit-search-cancel-button,

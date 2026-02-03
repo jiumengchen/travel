@@ -2,24 +2,18 @@
   <div class="container">
     <div class="cart-init">
       <div class="header">
-        <h1>我的旅行购物车</h1>
-        <p>继续添加旅行产品</p>
+        <h1>订单结算</h1>
       </div>
       <p class="selectcount">
-        您已选择 <span style="color: #1e88e5; font-weight: bold">5</span> 个旅行产品
+        您即将购买 <span style="color: #1e88e5; font-weight: bold">5</span> 个旅行产品
       </p>
       <div class="main">
         <div class="left">
           <div class="title">
-            <h3>购物车商品</h3>
-            <div class="deletebtn" @click="isClear = true">
-              <svg-icon name="delete" fill="#6b7280"></svg-icon>
-              <p>清空购物车</p>
-            </div>
+            <h3>订单编号:#TRAVEL4151151554151</h3>
           </div>
           <div class="cart-list">
-            <div class="cart-item" v-for="(item, index) in 20">
-              <a-checkbox></a-checkbox>
+            <div class="cart-item" v-for="(item, index) in 3">
               <img ref="imgRef"
                 src="data:image/png;base64,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"
                 :data-src="`https://picsum.photos/200/${180 + index}`" alt="" />
@@ -48,9 +42,6 @@
                 </div>
               </div>
               <div class="price">￥2,599</div>
-              <svg-icon name="close" :fill="closeActiveIndex == index ? closeColor.active : closeColor.noactive"
-                width="12px" height="12px" style="cursor: pointer" @mouseover="closeActiveIndex = index"
-                @mouseleave="closeActiveIndex = -1"></svg-icon>
             </div>
           </div>
         </div>
@@ -79,35 +70,30 @@
               <h4>总计</h4>
               <p>￥21,497</p>
             </div>
-            <!-- <div class="pay">
+            <div class="pay">
               <p>支付方式</p>
               <div class="alipay" @click="handlePayType('alipay')">
-                <a-radio :checked="value === 'alipay'">
-                </a-radio>
+                <a-radio :checked="value === 'alipay'"> </a-radio>
                 <div class="pay-icon ali">
                   <svg-icon name="alipay" fill="#fff" width="20px" height="20px"></svg-icon>
                 </div>
-                <p style="margin-left: 10px;">支付宝支付</p>
+                <p style="margin-left: 10px">支付宝支付</p>
               </div>
               <div class="wxpay" @click="handlePayType('wxpay')">
                 <a-radio value="wxpay" :checked="value === 'wxpay'"></a-radio>
                 <div class="pay-icon wx">
                   <svg-icon name="wx" fill="#fff" width="20px" height="20px"></svg-icon>
                 </div>
-                <p style="margin-left: 10px;">微信支付</p>
+                <p style="margin-left: 10px">微信支付</p>
               </div>
-            </div> -->
-            <div class="btn" @click="submitOrder">
-              <p>提交订单</p>
+            </div>
+            <div class="btn" @click="pay">
+              <p>去支付</p>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <NotifyConfirm title="确定清空购物车吗?" context="您确定要清空购物车中的所有商品吗？此操作不可撤销" :isShow="isClear" type="danger"
-      @confirm="clearCartList" @cancel="isClear = false" confirmText="确定清空" />
-    <NotifyConfirm title="提交订单成功" context="您将跳转到订单支付页面" :isShow="isSubmitOrderSuccess" type="success"
-      @confirm="goPayOrder" @cancel="isSubmitOrderSuccess = false" confirmText="去支付" cancelText="继续浏览" />
     <ContactWe></ContactWe>
     <FooterBar></FooterBar>
   </div>
@@ -141,17 +127,18 @@ const getCartList = async () => {
     console.log(result.data.data)
   } catch (error) { }
 }
-const handlePayType = (payType: string) => {
-  value.value = payType
-}
-const goPayOrder = () => {
+const pay = () => {
   $router.push({
-    path: '/payorder',
+    path: '/payresult',
     query: {
-      orderId: '666',
+      type: 'success',
     },
   })
 }
+const handlePayType = (payType: string) => {
+  value.value = payType
+}
+
 const submitOrder = () => {
   isSubmitOrderSuccess.value = true
 }
