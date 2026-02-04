@@ -14,6 +14,7 @@ import updateLocale from 'dayjs/plugin/updateLocale'
 import NotifyConfirm from '@/components/NotifyConfirm/index.vue'
 import AdminBreadcrumb from '@/components/AdminBreadcrumb/index.vue'
 import TemplateComponent from '@/components/TemplateComponent/index.vue'
+import XTable from '@/components/x-table/index.vue'
 import '@/mock/index'
 dayjs.locale('zh-cn')
 dayjs.extend(updateLocale)
@@ -31,5 +32,6 @@ app.component('SvgIcon', SvgIcon)
 app.component('NotifyConfirm', NotifyConfirm)
 app.component('AdminBreadcrumb', AdminBreadcrumb)
 app.component('TemplateComponent', TemplateComponent)
+app.component('XTable',XTable);
 
 app.mount('#app')
