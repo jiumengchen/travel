@@ -5,7 +5,7 @@
         style="width: 300px;" />
     </template>
     <template #HeaderRight>
-      <a-button type="primary">新增用户</a-button>
+      <a-button type="primary" @click="modalOpen = true;title='新增用户'">新增用户</a-button>
       <a-button type="primary">刷新</a-button>
       <a-button type="primary">重置</a-button>
     </template>
@@ -21,11 +21,16 @@
       </x-table>
     </template>
   </TemplateComponent>
+  <user-modal :open="modalOpen" @confirm="handleUser" @cancel="modalOpen = false" :data="cloneDeepData" :title="title"></user-modal>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
-
+import UserModal from './components/UserModal/index.vue'
+import { cloneDeep } from 'lodash-es';
+const modalOpen = ref<boolean>(false);
+const cloneDeepData = ref<any>({});
+const title = ref<string>('');
 const columns = [
   {
     title: '用户名',
@@ -86,7 +91,13 @@ for (let i = 0; i < 100; i++) {
 }
 const dataSource = ref(data);
 const handleEdit = (record:any)=>{
-  console.log(record);
+  title.value = '编辑用户'
+  cloneDeepData.value = cloneDeep(record);
+  modalOpen.value = true;
+  console.log(cloneDeepData.value);
+}
+const handleUser = ()=>{
+  modalOpen.value = false;
 }
 </script>
 
