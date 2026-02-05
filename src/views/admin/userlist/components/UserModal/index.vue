@@ -51,7 +51,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, onMounted } from 'vue'
+import { ref, reactive, onMounted, watch } from 'vue'
 const title = ref('')
 // 定义 Props
 interface AddUserModalProps {
@@ -103,4 +103,11 @@ const handleCancel = () => {
 const handleClose = () => {
   emit('close')
 }
+
+watch(()=>props.data,()=>{
+  formData.name = props.data.name
+  formData.email = props.data.email
+  formData.password = props.data.password
+  formData.role = 1
+})
 </script>

@@ -76,6 +76,14 @@ const adminRouters: RouteRecordRaw[] = [
             },
           },
           {
+            path: '/admin/contentmanage/attractionmanage',
+            component: () => import('@/views/admin/attractionmanage/index.vue'),
+            meta: {
+              title: '景点管理',
+              icon: 'icon-jingdian',
+            },
+          },
+          {
             path: '/admin/contentmanage/strategymanage',
             component: () => import('@/views/admin/strategymanage/index.vue'),
             meta: {

@@ -1,5 +1,5 @@
 <template>
-  <a-table :columns="props.columns" :data-source="props.dataSource" bordered>
+  <a-table :columns="props.columns" :data-source="props.dataSource" bordered rowClassName="rowClassName">
     <template #bodyCell="{ column, record }">
       <template v-if="column.dataIndex === 'operation'">
         <div class="operation-button">
@@ -15,10 +15,6 @@
   </a-table>
 </template>
 <script lang="ts" setup>
-import { cloneDeep } from 'lodash-es';
-import { reactive, ref } from 'vue';
-import type { UnwrapRef } from 'vue';
-
 const props = defineProps({
   columns:{
     type:Array,
@@ -29,26 +25,7 @@ const props = defineProps({
     default:[]
   }
 })
-interface DataItem {
-  key: string;
-  name: string;
-  age: number;
-  address: string;
-}
 
-
-const editableData: UnwrapRef<Record<string, DataItem>> = reactive({});
-
-const edit = (key: string) => {
-  editableData[key] = cloneDeep(dataSource.value.filter(item => key === item.key)[0]);
-};
-const save = (key: string) => {
-  Object.assign(dataSource.value.filter(item => key === item.key)[0], editableData[key]);
-  delete editableData[key];
-};
-const cancel = (key: string) => {
-  delete editableData[key];
-};
 </script>
 <style scoped>
 .operation-button{
@@ -56,5 +33,11 @@ const cancel = (key: string) => {
   align-items: center;
   justify-content: center;
   gap: 10px;
+}
+.rowClassName{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
 }
 </style>

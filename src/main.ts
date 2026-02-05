@@ -27,7 +27,6 @@ const app = createApp(App)
 app.use(store)
 app.use(router)
 app.use(Antd, { locale: zhCN } as any)
-
 app.component('SvgIcon', SvgIcon)
 app.component('NotifyConfirm', NotifyConfirm)
 app.component('AdminBreadcrumb', AdminBreadcrumb)
