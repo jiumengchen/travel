@@ -99,6 +99,14 @@ const adminRouters: RouteRecordRaw[] = [
               icon: 'icon-biaoqian',
             },
           },
+          {
+            path: '/admin/contentmanage/categorymanage',
+            component: () => import('@/views/admin/categorymanage/index.vue'),
+            meta: {
+              title: '类型管理',
+              icon: 'icon-fenlei',
+            },
+          },
         ],
       },
       {
