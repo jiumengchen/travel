@@ -126,14 +126,6 @@ const adminRouters: RouteRecordRaw[] = [
             },
           },
           {
-            path: '/admin/shopmanage/scenicmanage',
-            component: () => import('@/views/admin/scenicmanage/index.vue'),
-            meta: {
-              title: '景区门票管理',
-              icon: 'icon-jingqu',
-            },
-          },
-          {
             path: '/admin/shopmanage/travelmanage',
             component: () => import('@/views/admin/travelmanage/index.vue'),
             meta: {
@@ -196,8 +188,8 @@ const adminRouters: RouteRecordRaw[] = [
         ],
       },
       {
-        path: '/admin/ordermanage',
-        redirect: '/admin/ordermanage/orderlist',
+        path: '/admin/noticemanage',
+        component: () => import('@/views/admin/noticemanage/index.vue'),
         meta: {
           title: '公告管理',
           icon: 'icon-gonggao',
