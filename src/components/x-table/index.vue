@@ -11,6 +11,11 @@
           <slot name="status" :data="{ record }"></slot>
         </div>
       </template>
+      <template v-if="column.dataIndex === 'tag'">
+        <div class="operation-button">
+          <slot name="tag" :data="{ record }"></slot>
+        </div>
+      </template>
     </template>
   </a-table>
 </template>
